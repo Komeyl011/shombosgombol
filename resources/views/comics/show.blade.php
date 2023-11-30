@@ -11,7 +11,7 @@
             </div>
             {{-- This is where the comics page is gonna be --}}
             <div class="my-10 max-w-full">
-                <img src="{!! asset("/storage/$title/$page->image") !!}" alt="{!! $title !!} page 0{!! $page->page !!}">
+                <img src="{!! asset("/storage/". str_replace(' ', '%20', $title) ."/$page->image") !!}" alt="{!! $title !!} page 0{!! $page->page !!}">
             </div>
             {{-- Here goes the navigating buttons to go to next, previous or first page --}}
             <div class="my-5 mx-16 lg:mx-40">

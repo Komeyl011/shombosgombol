@@ -12,13 +12,14 @@ use Livewire\Attributes\Title;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
-class AdminUpdate extends Component
+class AdminUpdatePost extends Component
 {
     use WithFileUploads;
 
     public AdminUpdateForm $form;
 
     public $key;
+    private $error = null;
 
     public function mount()
     {
@@ -82,7 +83,9 @@ class AdminUpdate extends Component
 
     public function updateComic()
     {
-        return $this->form->updateRecord($this->key);
+        return $this->form->updateRecord($this->key)
+            ? $this->error = 'Edited successfully'
+            : $this->error = 'There was an error';
     }
 
     /**

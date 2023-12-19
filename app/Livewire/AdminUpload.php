@@ -5,6 +5,7 @@ namespace App\Livewire;
 use App\Livewire\Forms\AdminUploadForm;
 use App\Models\ComicsTitles;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\URL;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
 use Livewire\Component;

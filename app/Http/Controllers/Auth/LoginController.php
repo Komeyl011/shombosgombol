@@ -23,6 +23,16 @@ class LoginController extends Controller
         return view('timoros.auth.login');
     }
 
+    protected function roles()
+    {
+        return [
+            'platform.systems.roles',
+            'platform.systems.attachment',
+            'platform.systems.users',
+            'platform.systems.index',
+        ];
+    }
+
     /**
      * Handle user login request
      *
@@ -38,7 +48,18 @@ class LoginController extends Controller
             return redirect()->to('/timoros/login')->withErrors(trans('auth.failed'));
         endif;
 
+        $roles = [];
         $user = $this->guard()->getProvider()->retrieveByCredentials($credentials);
+        if (!is_null($user->permissions)) {
+            foreach (json_decode($user->permissions, true) as $key => $value) {
+                foreach ($this->roles() as $role) {
+                    if ($role == $key && $value) {
+                        $roles[] = $role;
+                    }
+                }
+            }
+        }
+
         if ($remember):
             $this->guard()->login($user, true);
             $user->setRememberToken(Str::random(60));
@@ -46,20 +67,27 @@ class LoginController extends Controller
             $this->guard()->login($user);
         endif;
 
-        return $this->authenticated($user);
+        return $this->authenticated($user, $roles);
     }
 
     /**
      * Send response of user authentication
      *
      * @param $user
+     * @param array $roles
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function authenticated($user)
+    public function authenticated($user, array $roles)
     {
-        return $user
-            ? redirect()->route('admin.index')
-            : redirect()->to('/timoros/login')->withErrors(trans('auth.failed'));
+        if ($user):
+            if (count($roles) > 0):
+                return redirect()->route('admin.index');
+            else:
+                return redirect()->route('home');
+            endif;
+        else:
+            return redirect()->to('/timoros/login')->withErrors(trans('auth.failed'));
+        endif;
     }
 
     /**

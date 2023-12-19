@@ -11,12 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('comics_titles', function (Blueprint $table) {
+        Schema::create('roles', function (Blueprint $table) {
             $table->id();
-            $table->text('title')->unique();
-            $table->longText('image');
+            $table->text('slag');
             $table->timestamps();
-            $table->text('per_title')->unique();
         });
     }
 
@@ -25,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('comics_titles');
+        Schema::dropIfExists('roles');
     }
 };

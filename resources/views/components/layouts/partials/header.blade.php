@@ -7,5 +7,4 @@
     </section>
 {{--    {{ \Illuminate\Support\Facades\Session::get('locale') }}--}}
     @include('components.layouts.partials.navigation.navbar')
-    @include('components.layouts.partials.change-lang')
 </header>

@@ -1,4 +1,4 @@
-<section class="hidden lg:block absolute w-96 right-0 translate-y-1/3 font-light font-viga">
+<section class="hidden lg:block absolute w-96 right-10 translate-y-1/3 font-light font-viga">
     <div class="flex flex-wrap w-full">
         <div class="bg-gradient-to-r from-purple-400 to-pink-400 px-20 py-10 w-1/4 flex flex-col justify-center items-center">
             <i class="fa-brands fa-instagram text-5xl drop-shadow-3xl"></i>

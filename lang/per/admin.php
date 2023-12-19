@@ -12,8 +12,16 @@ return [
     |
     */
 
+    'nav-home' => 'خانه',
+    'nav-back' => 'برگشت',
     'logout' => 'خروج',
     'newUpload' => 'آپلود جدید',
-    'showAll' => 'نمایش تمامی کامیک‌ها',
+    'showAllComics' => 'نمایش تمامی کامیک‌ها',
+    'showAllUsers' => 'نمایش تمام کاربرها',
+    'showProfile' => 'پروفایل',
+    'user-edit-uid' => 'نام کاربری',
+    'user-edit-email' => 'ایمیل',
+    'user-edit-permissions' => 'مجوزها',
+    'user-edit-created' => 'تاریخ ساخت',
 
 ];

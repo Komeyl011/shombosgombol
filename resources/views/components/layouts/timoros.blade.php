@@ -10,6 +10,9 @@
     <title>{{ $title ?? '' }} | Shombos Gombol's Admin</title>
 </head>
 <body class="body-bg {!! app()->getLocale() === 'per' ? 'font-farnaz font-bold' : 'font-viga' !!}">
+    <header class="flex items-center text-center">
+        @include('components.layouts.partials.admin.user-logout')
+    </header>
     {{ $slot }}
 </body>
 </html>

@@ -1,5 +1,4 @@
 <main class="body-bg w-full h-screen flex flex-col items-center">
-    @include('components.layouts.partials.admin.user-logout')
     <section class="w-4/5 lg:w-1/2 mx-auto pt-20 lg:pt-40">
         <form wire:submit.prevent="uploadPhoto()" method="post" enctype="multipart/form-data" autocomplete="off"
                 class="flex flex-1 flex-col items-center text-white bg-gray-400/50 rounded-md py-20 px-10 lg:w-3/4 lg:mx-auto lg:py-32">

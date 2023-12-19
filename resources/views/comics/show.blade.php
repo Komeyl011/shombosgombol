@@ -7,11 +7,11 @@
             {{-- Comics title and page are shown here --}}
             <div class="text-center my-5">
                 <h3 class="text-3xl">{!! app()->getLocale() === 'per' ? $per_title : $title !!}</h3>
-                <p class="text-lg">{!! __('showComic.page') !!} 0{!! $page->page !!}</p>
+                <p class="text-lg">{!! __('showComic.page') !!} {!! $page->page < 10 ? '0'.$page->page : $page->page !!}</p>
             </div>
             {{-- This is where the comics page is gonna be --}}
             <div class="my-10 max-w-full">
-                <img src="{!! asset("/storage/". str_replace(' ', '%20', $title) ."/$page->image") !!}" alt="{!! $title !!} page 0{!! $page->page !!}">
+                <img src="{{ asset("/storage/". str_replace(' ', '%20', $title) ."/$page->image") }}" alt="{!! $title !!} page 0{!! $page->page !!}">
             </div>
             {{-- Here goes the navigating buttons to go to next, previous or first page --}}
             <div class="my-5 mx-16 lg:mx-40">

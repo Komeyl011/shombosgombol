@@ -9,9 +9,10 @@ use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
 use Livewire\Component;
 
-class AdminShowAll extends Component
+class AdminShowAllPosts extends Component
 {
     public $deleted = false;
+
     /**
      * Get all the comics titles and pages count from database
      *

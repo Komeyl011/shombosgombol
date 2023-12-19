@@ -12,8 +12,16 @@ return [
     |
     */
 
+    'nav-home' => 'Home',
+    'nav-back' => 'Back',
     'logout' => 'Logout',
     'newUpload' => 'New upload',
-    'showAll' => 'Show all comics',
+    'showAllComics' => 'Show all comics',
+    'showAllUsers' => 'Show all users',
+    'showProfile' => 'Show Profile',
+    'user-edit-uid' => 'Username',
+    'user-edit-email' => 'Email',
+    'user-edit-permissions' => 'permissions',
+    'user-edit-created' => 'Date created',
 
 ];

@@ -1,5 +1,4 @@
 <main class="flex flex-col items-center h-screen">
-    @include('components.layouts.partials.admin.user-logout')
     <section class="w-4/5 lg:w-1/2 mx-auto pt-20 lg:pt-40 flex-1">
         <form wire:submit.prevent="updateComic()" method="post" enctype="multipart/form-data" autocomplete="off"
               class="flex flex-col items-center text-white bg-gray-400/50 rounded-md py-20 px-10 lg:w-3/4 lg:mx-auto lg:py-32">
@@ -38,7 +37,7 @@
                     @forelse($pages as $page)
                         <li class="my-2 flex flex-row-reverse">
                             <span wire:click="deletePage({!! $page->page !!}, {!! $page->id !!}, {!! $page->title_id !!})"
-                                class="peer hover:cursor-pointer hover:text-red-600 text-red-500 ml-10 drop-shadow-3xl transition-all ease-in-out">{!! __('edit.del') !!}</span>
+                                class="peer hover:cursor-pointer hover:text-red-600 text-red-500 {{ app()->getLocale() === 'per' ? 'mr-10' : 'ml-10' }} drop-shadow-3xl transition-all ease-in-out">{!! __('edit.del') !!}</span>
                             <span wire:click="showPage({!! $page->page !!}, {!! $page->id !!})"
                                 class="peer-hover:text-gray-300 hover:text-gray-300 hover:cursor-pointer transition-all ease-in-out">{!! __('edit.page') !!} {{ $page->page < 10 ? '0'.$page->page : $page->page }}</span>
                         </li>
@@ -47,6 +46,7 @@
                     @endforelse
                 </ul>
             </div>
+            <div class="text-red-500">{!! $error ?? '' !!}</div>
             <button type="submit" class="border border-gray-300 rounded py-1 px-3 mt-5">{!! __('edit.updateBtn') !!}</button>
         </form>
     </section>

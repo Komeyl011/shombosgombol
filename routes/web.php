@@ -39,13 +39,16 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
     });
 });
 
-Route::group(['middleware' => ['auth']], function () {
-    Route::group(['namespace' => 'App\Livewire'], function () {
-        Route::get('/timoros', 'Admin')->name('admin.index');
-        Route::get('/timoros/comics/showcase', 'AdminShowAll')->name('admin.comic.show-all');
-        Route::get('/timoros/comic/upload', 'AdminUpload')->name('admin.comic.upload-page');
-        Route::get('/timoros/comic/edit/{key}', 'AdminUpdate')->name('admin.comic.edit-page');
-        Route::post('/timoros/comic/upload', 'AdminController@upload')->name('admin.comic.upload-perform');
-        Route::post('/timoros/comic/edit', 'AdminController@edit')->name('admin.comic.edit-perform');
+Route::prefix('/timoros')->group(function () {
+    Route::group(['middleware' => ['auth']], function () {
+        Route::group(['namespace' => 'App\Livewire'], function () {
+            Route::get('/', 'Admin')->name('admin.index');
+            Route::get('/comics/showcase', 'AdminShowAllPosts')->name('admin.comic.show-all');
+            Route::get('/comic/upload', 'AdminUpload')->name('admin.comic.upload-page');
+            Route::get('/comic/edit/{key}', 'AdminUpdatePost')->name('admin.comic.edit-page');
+            Route::get('/users/show', 'AdminShowUsers')->name('admin.users.show');
+            Route::get('/users/edit/{key}', 'AdminUpdateUser')->name('admin.users.edit-user');
+            Route::get('/admin-user/profile', 'AdminUserProfile')->name('admin.admin-user.profile');
+        });
     });
 });

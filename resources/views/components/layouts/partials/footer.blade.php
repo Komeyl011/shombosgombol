@@ -7,7 +7,7 @@
         <div class="flex justify-around items-center mx-auto py-10 px-5">
             <span class="drop-shadow text-xl">{!! __('footer.followMe') !!}: </span>
             <a href="#"><i class="fa-brands fa-instagram drop-shadow text-2xl hover:text-gray-100/50"></i></a>
-            <a href="#"><i class="fa-brands fa-telegram drop-shadow text-2xl hover:text-gray-100/50"></i></a>
+            <a href="https://t.me/shombosgombolcomics"><i class="fa-brands fa-telegram drop-shadow text-2xl hover:text-gray-100/50"></i></a>
             <a href="#"><i class="fa-brands fa-youtube drop-shadow text-2xl hover:text-gray-100/50"></i></a>
             <a href="#"><i class="fa-brands fa-x-twitter drop-shadow text-2xl hover:text-gray-100/50"></i></a>
         </div>
@@ -15,10 +15,9 @@
         <div class="flex justify-around items-center mx-auto mt-5 px-10 pb-10">
             <span class="first-letter:uppercase">{!! __('footer.latest') !!}: </span>
             <div class="flex flex-col justify-center items-center">
-                <span class="text-sm my-2 hover:text-gray-300"><a href="#">lorem ipsum dolor</a></span>
-                <span class="text-sm my-2 hover:text-gray-300"><a href="#">lorem ipsum dolor</a></span>
-                <span class="text-sm my-2 hover:text-gray-300"><a href="#">lorem ipsum dolor</a></span>
-                <span class="text-sm my-2 hover:text-gray-300"><a href="#">lorem ipsum dolor</a></span>
+                @foreach(\App\Models\ComicsTitles::query()->latest('updated_at')->limit(4)->get() as $latest)
+                    <span class="text-sm my-2 hover:text-gray-300"><a href="{!! route('comic.show', ['key' => $latest->id]) !!}">{!! app()->getLocale() === 'per' ? $latest->per_title : $latest->title !!}</a></span>
+                @endforeach
             </div>
         </div>
     </section>

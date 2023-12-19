@@ -1,5 +1,4 @@
 <main class="flex flex-col items-center py-32 h-screen">
-    @include('components.layouts.partials.admin.user-logout')
     <section class="w-4/5 mx-auto flex-1">
         <table class="w-full table-fixed my-10 mx-auto border-separate border-spacing-y-1 border-spacing-x-3
                    lg:border-spacing-y-4 lg:border-spacing-x-4 text-center text-white drop-shadow-3xl">

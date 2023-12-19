@@ -53,6 +53,6 @@ class AdminUploadForm extends Form
         $formData['updated_at'] = date('Y-m-d H:i:s');
         $data = $formData;
 
-        return Comics::query()->insert($data) && $store;
+        return Comics::query()->insert($data) && ComicsTitles::query()->where('id', '=', $this->title_id)->update(['updated_at' => date('Y-m-d H:i:s')]) && $store;
     }
 }

@@ -4,6 +4,7 @@ namespace App\Livewire\Forms;
 
 use App\Models\ComicsTitles;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 use Livewire\Attributes\Rule;
 use Livewire\Attributes\Validate;
 use Livewire\Form;
@@ -38,9 +39,18 @@ class AdminUpdateForm extends Form
         endif;
     }
 
+    private function updateFolderName($id)
+    {
+        $title = ComicsTitles::query()->where('id', '=', $id)->get()->toArray();
+        if ($this->title != $title[0]['title']) {
+            Storage::move('/public/'.$title[0]['title'], '/public/'.$this->title);
+        }
+    }
+
     public function updateRecord($id)
     {
         $this->uploadCover($id);
+        $this->updateFolderName($id);
         return ComicsTitles::query()->where('id', '=', $id)->update($this->toArray()) == 1;
     }
 }

@@ -23,5 +23,7 @@ return [
     'btn' => 'Upload',
     'success' => 'All done :)',
     'picture' => 'Picture',
+    'gettingFile' => 'Getting the file ...',
+    'uploading' => 'Uploading ...',
 
 ];

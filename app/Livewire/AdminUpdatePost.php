@@ -6,6 +6,7 @@ use App\Livewire\Forms\AdminUpdateForm;
 use App\Models\Comics;
 use App\Models\ComicsTitles;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
@@ -84,8 +85,8 @@ class AdminUpdatePost extends Component
     public function updateComic()
     {
         return $this->form->updateRecord($this->key)
-            ? $this->error = 'Edited successfully'
-            : $this->error = 'There was an error';
+            ? session()->flash('success', 'Upload successful!')
+            : session()->flash('fail', 'There was an error!');
     }
 
     /**

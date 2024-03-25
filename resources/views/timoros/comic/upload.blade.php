@@ -50,7 +50,15 @@
             </div>
             <p class="w-1/4 break-all mx-auto text-center mt-5">{!! isset($form->image) && !is_string($form->image) ? $form->image->getClientOriginalName() : '' !!}</p>
             {!! $new ? '<span class="block text-green-500" id="cover">'.__('upload.pleaseChooseCover').'</span>' : '' !!}
-            <button type="submit" class="border border-gray-300 rounded py-1 px-3 mt-5">{!! __('upload.btn') !!}</button>
+            <div>
+                <button type="submit" wire:loading.remove class="border border-gray-300 rounded py-1 px-3 mt-5">{!! __('upload.btn') !!}</button>
+                <div wire:loading wire:target="form.image" class="border border-gray-300 rounded py-1 px-3 mt-5">
+                    {!! __('upload.gettingFile') !!}
+                </div>
+                <div wire:loading wire:target="uploadPhoto()" class="border border-gray-300 rounded py-1 px-3 mt-5">
+                    {!! __('upload.uploading') !!}
+                </div>
+            </div>
             @if($uploaded)
                 <p class="text-green-400 mt-5">{!! __('upload.success') !!}</p>
             @endif

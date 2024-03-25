@@ -34,13 +34,21 @@
                     <input type="checkbox" name="remember" id="remember">
                     <span>{!! __('login.remember') !!}</span>
                 </label>
-                <ul>
-                    @if($errors->count() > 0)
-                        @foreach($errors->all() as $error)
-                            <li class="text-red-700">{!! $error !!}</li>
-                        @endforeach
-                    @endif
-                </ul>
+{{--                <ul>--}}
+{{--                    @if($errors->count() > 0)--}}
+{{--                        @foreach($errors->all() as $error)--}}
+{{--                            <li class="text-red-700">{!! $error !!}</li>--}}
+{{--                        @endforeach--}}
+{{--                    @endif--}}
+{{--                </ul>--}}
+                @error('password') {{ $message }} @enderror
+                @if ($errors->any())
+                    @foreach ($errors->all() as $error)
+                        <div class="alert alert-danger" role="alert">
+                            {{ $error }}
+                        </div>
+                    @endforeach
+                @endif
                 <button type="submit" name="submit" class="py-2 px-5 rounded focus:border focus:border-black/50 font-bold text-black/50 focus:text-white">{!! __('login.btn') !!}</button>
             </form>
         </section>

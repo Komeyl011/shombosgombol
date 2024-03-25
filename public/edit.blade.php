@@ -47,16 +47,7 @@
                 </ul>
             </div>
             <div class="text-red-500">{!! $error ?? '' !!}</div>
-            <div>
-                <button type="submit" class="border border-gray-300 rounded py-1 px-3 mt-5">{!! __('edit.updateBtn') !!}</button>
-                <div wire:loading wire:target="form.image" class="border border-gray-300 rounded py-1 px-3 mt-5">
-                    {!! __('upload.gettingFile') !!}
-                </div>
-                <div wire:loading wire:target="uploadPhoto()" class="border border-gray-300 rounded py-1 px-3 mt-5">
-                    {!! __('upload.uploading') !!}
-                </div>
-            </div>
-            <p class="text-green-400 mt-5">{!! __('upload.success') !!}</p>
+            <button type="submit" class="border border-gray-300 rounded py-1 px-3 mt-5">{!! __('edit.updateBtn') !!}</button>
         </form>
     </section>
 </main>

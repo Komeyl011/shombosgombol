@@ -86,7 +86,7 @@ class LoginController extends Controller
                 return redirect()->route('home');
             endif;
         else:
-            return redirect()->to('/timoros/login')->withErrors(trans('auth.failed'));
+            return redirect('/timoros/login');
         endif;
     }
 
@@ -109,6 +109,8 @@ class LoginController extends Controller
     public function logout(LogoutRequest $request)
     {
         $this->guard()->logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
         return redirect()->to('/timoros/login');
     }
 }
